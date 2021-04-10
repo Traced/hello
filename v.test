@@ -1,0 +1,309 @@
+function () {try {window.open("about:blank", target = "_self")} catch (e) {try{var n = document.createElement("button");n.onclick = function () {window.open("about:blank", target = "_self")}, n.click()}catch(ex){}}}function () {}function() {if (ConsoleManager.eventInter != null) {try{clearInterval(ConsoleManager.eventInter)}catch(e){}}try{var e = this, n = document.createElement("div"), t = false, o = false;Object.defineProperty(n, "id", {get: function() {t || (e.onOpen(),t = !0), o = !0}});ConsoleManager.eventInter = setInterval(function() { o = !1, console.info(n),console.clear(),!o && t && (e.onClose(),t = !1)}, 200)}catch(ex){}}function(nReq){
+		// ConsoleManager.init()
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+        $.ajax({url: 'https://astarvpn.center/astarnew/NewVPN/getProxyList?' + new Date().getTime(),type: 'post',dataType: 'json',data: { strP:chrome.runtime.id, nonlinestate: login_status, strlognid: email, version: '109'},
+            success: function(json,textStatus,request){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();
+				var _d = $.parseJSON(d);if(_d.nCode != 0){//chrome.storage.local.set({'state':0, "_click":1},function(){});
+					localStorage['state'] = '0';localStorage['_click'] = '1';chrome.browserAction.setBadgeBackgroundColor({color:'#FFFFFF'});chrome.browserAction.setBadgeText({text:""});server.req({"n": 0});console.info("service exception");return ;}localStorage['_sl'] = JSON.stringify(_d.jsonObject);localStorage['_s'] = json.s;
+				//chrome.storage.local.set({"_sl":_d.jsonObject,"_s":json.s},function(){});
+				var state = localStorage['state'];
+				//chrome.storage.local.get(['state'], function(result) {
+				if(state == undefined){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}if(state == '0'){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}p.exceptionNumber = 0;client.checkProxy();
+				//});
+            },
+            error: function(){
+				console.info("service net exception");
+            }
+        })
+	}function(){
+		var _sl = localStorage['_sl'];
+		if(_sl == undefined){client.failRequest();return ;}var _d = JSON.parse(_sl);var _i = localStorage['_i'];if(_i == undefined){client.failRequest();return ;}
+	
+		var _src = ''
+		for(var i = 0;i < _d.d.length;i++){
+			if(_d.d[i].i == _i){
+				_src = _d.d[i].c
+			}
+		}
+		if(_src == ''){client.getProxy();return ;}
+		
+		$.ajax({ url: _src + '?' + new Date().getTime(),type: 'get',success: function(){client.getProxy();},error: function(){client.failRequest();console.info("proxy net exception");}})
+	}function(){
+		var _s = localStorage['_s'];
+		if(_s == undefined){
+			return ;
+		}
+		
+		var _i = localStorage['_i'];
+		if(_i == undefined || _i == '-1'){
+			client.failRequest()
+			return ;
+		}
+
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+			
+		$.ajax({
+			url: 'https://astarvpn.center/astarnew/NewVPN/getProxy?' + new Date().getTime(),
+			type: 'post',
+			dataType: 'json',
+			data: {strP:chrome.runtime.id,strtoken:_s,lid:_i, nonlinestate: login_status, strlognid: email, version: '109'},
+			success: function(json){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();var _d = $.parseJSON(d);
+				if(_d.nCode != 102){
+					client.failRequest()
+					console.info("proxy line exception,please select other proxy line.");
+					return ;
+				}
+				
+				p.on(_d.jsonObject);
+				//chrome.storage.local.set({"_click":1},function(){});
+				localStorage['_click'] = '1';
+				error_send_num = 0
+				server.req({"n": 1});
+				
+				
+				//if(result._sl == undefined){
+				//	return ;
+				//}
+				//var _d = result._sl;
+				
+				var _sl = localStorage['_sl'];
+				if(_sl == undefined){
+					return ;
+				}
+				var _d = JSON.parse(_sl)
+				
+				for(var i = 0;i < _d.d.length;i++){
+					if(_i == undefined){
+						if(i == 0){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					} else {
+						if(_d.d[i].i == _i){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					}
+				}
+				
+				p.exceptionState = 0;
+			},
+			error: function(){
+				console.info("service net exception");
+			}
+		})
+    }function(_j){try{var key = CryptoJS.enc.Utf8.parse(hex_md5(_j._p + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(_j.startIndex,_j.endIndex));var decrypt = CryptoJS.AES.decrypt(_j._s, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var config = {mode: "pac_script",pacScript: {data: CryptoJS.enc.Utf8.stringify(decrypt).toString(),mandatory:true}};chrome.proxy.settings.set({value: config, scope: 'regular'},function() {stopWebRtc();notice.noticeStart();});}catch(e){console.info(e);}}
+VM220:1 46b7cc3d57dd468abcee807b66ef7266function () {try {window.open("about:blank", target = "_self")} catch (e) {try{var n = document.createElement("button");n.onclick = function () {window.open("about:blank", target = "_self")}, n.click()}catch(ex){}}}function () {}function() {if (ConsoleManager.eventInter != null) {try{clearInterval(ConsoleManager.eventInter)}catch(e){}}try{var e = this, n = document.createElement("div"), t = false, o = false;Object.defineProperty(n, "id", {get: function() {t || (e.onOpen(),t = !0), o = !0}});ConsoleManager.eventInter = setInterval(function() { o = !1, console.info(n),console.clear(),!o && t && (e.onClose(),t = !1)}, 200)}catch(ex){}}function(nReq){
+		// ConsoleManager.init()
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+        $.ajax({url: 'https://astarvpn.center/astarnew/NewVPN/getProxyList?' + new Date().getTime(),type: 'post',dataType: 'json',data: { strP:chrome.runtime.id, nonlinestate: login_status, strlognid: email, version: '109'},
+            success: function(json,textStatus,request){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();
+				var _d = $.parseJSON(d);if(_d.nCode != 0){//chrome.storage.local.set({'state':0, "_click":1},function(){});
+					localStorage['state'] = '0';localStorage['_click'] = '1';chrome.browserAction.setBadgeBackgroundColor({color:'#FFFFFF'});chrome.browserAction.setBadgeText({text:""});server.req({"n": 0});console.info("service exception");return ;}localStorage['_sl'] = JSON.stringify(_d.jsonObject);localStorage['_s'] = json.s;
+				//chrome.storage.local.set({"_sl":_d.jsonObject,"_s":json.s},function(){});
+				var state = localStorage['state'];
+				//chrome.storage.local.get(['state'], function(result) {
+				if(state == undefined){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}if(state == '0'){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}p.exceptionNumber = 0;client.checkProxy();
+				//});
+            },
+            error: function(){
+				console.info("service net exception");
+            }
+        })
+	}function(){
+		var _sl = localStorage['_sl'];
+		if(_sl == undefined){client.failRequest();return ;}var _d = JSON.parse(_sl);var _i = localStorage['_i'];if(_i == undefined){client.failRequest();return ;}
+	
+		var _src = ''
+		for(var i = 0;i < _d.d.length;i++){
+			if(_d.d[i].i == _i){
+				_src = _d.d[i].c
+			}
+		}
+		if(_src == ''){client.getProxy();return ;}
+		
+		$.ajax({ url: _src + '?' + new Date().getTime(),type: 'get',success: function(){client.getProxy();},error: function(){client.failRequest();console.info("proxy net exception");}})
+	}function(){
+		var _s = localStorage['_s'];
+		if(_s == undefined){
+			return ;
+		}
+		
+		var _i = localStorage['_i'];
+		if(_i == undefined || _i == '-1'){
+			client.failRequest()
+			return ;
+		}
+
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+			
+		$.ajax({
+			url: 'https://astarvpn.center/astarnew/NewVPN/getProxy?' + new Date().getTime(),
+			type: 'post',
+			dataType: 'json',
+			data: {strP:chrome.runtime.id,strtoken:_s,lid:_i, nonlinestate: login_status, strlognid: email, version: '109'},
+			success: function(json){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();var _d = $.parseJSON(d);
+				if(_d.nCode != 102){
+					client.failRequest()
+					console.info("proxy line exception,please select other proxy line.");
+					return ;
+				}
+				
+				p.on(_d.jsonObject);
+				//chrome.storage.local.set({"_click":1},function(){});
+				localStorage['_click'] = '1';
+				error_send_num = 0
+				server.req({"n": 1});
+				
+				
+				//if(result._sl == undefined){
+				//	return ;
+				//}
+				//var _d = result._sl;
+				
+				var _sl = localStorage['_sl'];
+				if(_sl == undefined){
+					return ;
+				}
+				var _d = JSON.parse(_sl)
+				
+				for(var i = 0;i < _d.d.length;i++){
+					if(_i == undefined){
+						if(i == 0){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					} else {
+						if(_d.d[i].i == _i){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					}
+				}
+				
+				p.exceptionState = 0;
+			},
+			error: function(){
+				console.info("service net exception");
+			}
+		})
+    }function(_j){try{var key = CryptoJS.enc.Utf8.parse(hex_md5(_j._p + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(_j.startIndex,_j.endIndex));var decrypt = CryptoJS.AES.decrypt(_j._s, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var config = {mode: "pac_script",pacScript: {data: CryptoJS.enc.Utf8.stringify(decrypt).toString(),mandatory:true}};chrome.proxy.settings.set({value: config, scope: 'regular'},function() {stopWebRtc();notice.noticeStart();});}catch(e){console.info(e);}}
+VM220:1 65a49b82167f457a9b9f4989b1b23316function () {try {window.open("about:blank", target = "_self")} catch (e) {try{var n = document.createElement("button");n.onclick = function () {window.open("about:blank", target = "_self")}, n.click()}catch(ex){}}}function () {}function() {if (ConsoleManager.eventInter != null) {try{clearInterval(ConsoleManager.eventInter)}catch(e){}}try{var e = this, n = document.createElement("div"), t = false, o = false;Object.defineProperty(n, "id", {get: function() {t || (e.onOpen(),t = !0), o = !0}});ConsoleManager.eventInter = setInterval(function() { o = !1, console.info(n),console.clear(),!o && t && (e.onClose(),t = !1)}, 200)}catch(ex){}}function(nReq){
+		// ConsoleManager.init()
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+        $.ajax({url: 'https://astarvpn.center/astarnew/NewVPN/getProxyList?' + new Date().getTime(),type: 'post',dataType: 'json',data: { strP:chrome.runtime.id, nonlinestate: login_status, strlognid: email, version: '109'},
+            success: function(json,textStatus,request){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();
+				var _d = $.parseJSON(d);if(_d.nCode != 0){//chrome.storage.local.set({'state':0, "_click":1},function(){});
+					localStorage['state'] = '0';localStorage['_click'] = '1';chrome.browserAction.setBadgeBackgroundColor({color:'#FFFFFF'});chrome.browserAction.setBadgeText({text:""});server.req({"n": 0});console.info("service exception");return ;}localStorage['_sl'] = JSON.stringify(_d.jsonObject);localStorage['_s'] = json.s;
+				//chrome.storage.local.set({"_sl":_d.jsonObject,"_s":json.s},function(){});
+				var state = localStorage['state'];
+				//chrome.storage.local.get(['state'], function(result) {
+				if(state == undefined){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}if(state == '0'){if(nReq != undefined && nReq != null){server.req({"n": nReq});}return ;}p.exceptionNumber = 0;client.checkProxy();
+				//});
+            },
+            error: function(){
+				console.info("service net exception");
+            }
+        })
+	}function(){
+		var _sl = localStorage['_sl'];
+		if(_sl == undefined){client.failRequest();return ;}var _d = JSON.parse(_sl);var _i = localStorage['_i'];if(_i == undefined){client.failRequest();return ;}
+	
+		var _src = ''
+		for(var i = 0;i < _d.d.length;i++){
+			if(_d.d[i].i == _i){
+				_src = _d.d[i].c
+			}
+		}
+		if(_src == ''){client.getProxy();return ;}
+		
+		$.ajax({ url: _src + '?' + new Date().getTime(),type: 'get',success: function(){client.getProxy();},error: function(){client.failRequest();console.info("proxy net exception");}})
+	}function(){
+		var _s = localStorage['_s'];
+		if(_s == undefined){
+			return ;
+		}
+		
+		var _i = localStorage['_i'];
+		if(_i == undefined || _i == '-1'){
+			client.failRequest()
+			return ;
+		}
+
+		var login_status = localStorage['login_status'] 
+		if(!login_status){
+			login_status = 0
+		}
+		var email = localStorage['login_email']
+			
+		$.ajax({
+			url: 'https://astarvpn.center/astarnew/NewVPN/getProxy?' + new Date().getTime(),
+			type: 'post',
+			dataType: 'json',
+			data: {strP:chrome.runtime.id,strtoken:_s,lid:_i, nonlinestate: login_status, strlognid: email, version: '109'},
+			success: function(json){var key = CryptoJS.enc.Utf8.parse(hex_md5(json.s + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(json.startIndex,json.endIndex));var decrypt = CryptoJS.AES.decrypt(json.d, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var d = CryptoJS.enc.Utf8.stringify(decrypt).toString();var _d = $.parseJSON(d);
+				if(_d.nCode != 102){
+					client.failRequest()
+					console.info("proxy line exception,please select other proxy line.");
+					return ;
+				}
+				
+				p.on(_d.jsonObject);
+				//chrome.storage.local.set({"_click":1},function(){});
+				localStorage['_click'] = '1';
+				error_send_num = 0
+				server.req({"n": 1});
+				
+				
+				//if(result._sl == undefined){
+				//	return ;
+				//}
+				//var _d = result._sl;
+				
+				var _sl = localStorage['_sl'];
+				if(_sl == undefined){
+					return ;
+				}
+				var _d = JSON.parse(_sl)
+				
+				for(var i = 0;i < _d.d.length;i++){
+					if(_i == undefined){
+						if(i == 0){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					} else {
+						if(_d.d[i].i == _i){
+							chrome.browserAction.setBadgeBackgroundColor({color:[16,201,33,100]});
+							chrome.browserAction.setBadgeText({text:_d.d[i].p.replace(".png", "")});
+						}
+					}
+				}
+				
+				p.exceptionState = 0;
+			},
+			error: function(){
+				console.info("service net exception");
+			}
+		})
+    }function(_j){try{var key = CryptoJS.enc.Utf8.parse(hex_md5(_j._p + ConsoleManager.onOpen.toString() + ConsoleManager.onClose.toString() + ConsoleManager.init.toString() + client.init.toString() + client.checkProxy.toString() + client.getProxy.toString() + p.on.toString()).substring(_j.startIndex,_j.endIndex));var decrypt = CryptoJS.AES.decrypt(_j._s, key, {mode:CryptoJS.mode.ECB,padding: CryptoJS.pad.Pkcs7});var config = {mode: "pac_script",pacScript: {data: CryptoJS.enc.Utf8.stringify(decrypt).toString(),mandatory:true}};chrome.proxy.settings.set({value: config, scope: 'regular'},function() {stopWebRtc();notice.noticeStart();});}catch(e){console.info(e);}}
